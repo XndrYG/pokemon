@@ -1,0 +1,85 @@
+body {
+  padding: 0;
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.container {
+  padding: 48px;
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #762fa4;
+  border-radius:8px;
+  border: 8px solid #fde857;
+  width: 325px;
+  padding: 15px;
+}
+
+/*.card-header {
+  font: 30px "Futura Condensed Medium", serif;
+}*/
+
+.card-title {
+  font-size: 30px;
+  top: 50px;
+  left: 60px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
+}
+
+.type {
+  width: 50px;
+  height: 50px;
+}
+
+.header {
+  width: 50px;
+  height: 50px;
+  padding-bottom: 10px;
+}
+
+.pokemon {
+  width: 300px;
+  height: 300px;
+}
+
+.move1-name {
+  padding-top: 15px;
+}
+
+.move1-power {
+  padding-top: 15px;
+}
+
+.move2-name {
+  padding-top: 15px;
+}
+
+.move2-power {
+  padding-top: 15px;
+}
+
+.stats {
+  display: flex;
+}
+
+.move1 {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
+}
+
+.move2 {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
+}
+
+a {
+  color: #00B7FF;
+}
