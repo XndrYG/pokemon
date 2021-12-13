@@ -2,7 +2,11 @@ extends layout
 
 block content
   div.container
+    div.add-button-row
+      a.button.save(href="/add") Add Pokemon
     each pokemon in pokemonList
+      div.edit
+        a(href=`/edit/${pokemon.id}`) Edit
       div.card
         div.card-header
           div.card-title= pokemon.name

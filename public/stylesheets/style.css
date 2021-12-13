@@ -80,6 +80,9 @@ body {
   border-bottom: 2px solid black;
 }
 
+.electric {
+  background-color: yellow;
+}
 a {
   color: #00B7FF;
 }
