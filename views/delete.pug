@@ -2,7 +2,7 @@ extends layout
 
 block content
     div.form-panel
-        div.header Edit Pokemon
+        div.header Delete Pokemon
             form(action=`/edit/${pokemon.id}` method='post')
                 div.form-input
                     label(for='name') Name:
@@ -11,8 +11,8 @@ block content
                     label(for='type') Pokemon Type:
                     input(type='text' id='type' name='type' value=pokemon.type)
                 div.form-input
-                    label(for='picture') Pokemon Image:
-                    input(type='text' id='picture' name='picture' value=pokemon.picture)
+                    label(for='image') Pokemon Image:
+                    input(type='text' id='image' name='image' value=pokemon.picture)
                 div.form-input
                     label(for='move1cost1') Move 1 Cost:
                     input(type='text' id='move1cost1' name='move1cost1' value=pokemon.move1cost1)
@@ -44,12 +44,13 @@ block content
                     label(for='weakness') Weakness:
                     input(type='text' id='weakness' name='weakness' value=pokemon.weakness)
                 div.form-input
-                    label(for='resistance') Resistance:
+                    label(for='resistance') Move 1 Cost:
                     input(type='text' id='resistance' name='resistance' value=pokemon.resistance)
                 div.form-input
                     label(for='retreatcost') Retreat Cost:
                     input(type='text' id='retreatcost' name='retreatcost' value=pokemon.retreatcost)
                 div.button-row
                     a.button.cancel(href='/') Cancel
-                    a.button.delete(href=`/delete/${pokemon.id}`) Delete
+                    if (mode==='edit')
+                        a.button.delete(href=`/delete/${pokemon.id}`) Delete
                     button.button.save(type='submit') Submit

@@ -7,6 +7,8 @@ block content
     each pokemon in pokemonList
       div.edit
         a(href=`/edit/${pokemon.id}`) Edit
+      div.delete-button
+        a.button.save(href="/delete") Delete
       div.card
         div.card-header
           div.card-title= pokemon.name
