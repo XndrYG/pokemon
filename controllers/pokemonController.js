@@ -1,9 +1,28 @@
-const {Pokemon} = require('../models')
+const {Pokemon} = require('../models');
+const categories = ['https://image.ibb.co/nhYAf6/purple_icon.png', 'https://cdn.pixabay.com/photo/2018/05/20/21/00/pokemon-3416764_1280.png', 'https://uploads.scratch.mit.edu/users/avatars/38728667.png', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Pok%C3%A9mon_Water_Type_Icon.svg/1200px-Pok%C3%A9mon_Water_Type_Icon.svg.png', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Pok%C3%A9mon_Electric_Type_Icon.svg/1024px-Pok%C3%A9mon_Electric_Type_Icon.svg.png'];
 
 module.exports.viewAll = async function(req, res, next) {
-    const pokemonList = await Pokemon.findAll();
-
-    res.render('index', {pokemonList});
+    let searchCategories = ['All'];
+    let searchRandom = req.query.random || false;
+    for(let i = 0; i<categories.length; i++){
+        searchCategories.push(categories[i]);
+    }
+    let pokemons;
+    let searchCategory = req.query.category || 'All';
+    if (searchCategory==='All'){
+        pokemons = await Pokemon.findAll();
+    } else {
+        pokemons = await Pokemon.findAll({
+            where: {
+                        category: searchCategory
+                    }
+        });
+    }
+    if (pokemons.length > 0 && searchRandom) {
+        let randomIndex = getRandomInt(pokemons.length);
+        pokemons = [pokemons[randomIndex]];
+    }
+    res.render('index', {pokemons, categories:searchCategories, searchCategory, searchRandom});
 }
 
 module.exports.renderEditForm = async function(req, res, next) {
@@ -92,4 +111,8 @@ module.exports.addPokemon = async function(req,res){
             retreatcost: req.body.retreatcost
         });
     res.redirect('/');
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
 }
